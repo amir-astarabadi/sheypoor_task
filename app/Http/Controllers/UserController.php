@@ -21,6 +21,12 @@ class UserController extends Controller
 
         return UserResourceCollection::make($users);
     }
+
+    public function show(User $user)
+    {
+        return UserResource::make($user);
+    }
+
     
     public function store(UserCreateRequest $request)
     {
