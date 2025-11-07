@@ -13,10 +13,14 @@
 
 6. Run `docker compose up -d`.
 
-7. Access app on `http://localhost:8000`.
+7. Run `docker exec -it sheypoor_app php artisan app:deploy`.
+
+8. Access app on `http://localhost:8000`.
 
 # API Testing with Postman
 1. Import the Postman Sheypoor.postman_collection.json collection.
+2. Run `docker compose run app php artisan db:seed`
+3. To Keep sync between database and redis run `docker exec -it sheypoor_app  php artisan queue:work`.
 
 # API endpoints:
     - GET api/users/: get top n ranked users
