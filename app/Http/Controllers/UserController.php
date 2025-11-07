@@ -39,7 +39,7 @@ class UserController extends Controller
     {
         $leaderBoardService->update($user->getLeaderBoardKey(), $request->get('score'));
 
-        UpdateUserScoreJob::dispatch($user->id, $request->get('score'));
+        UpdateUserScoreJob::dispatch($user->id);
         
         return UserResource::make($user);
     }
