@@ -48,9 +48,23 @@ class User extends Authenticatable
         return resolve(LeaderBoardService::class)->getRank($this->getLeaderBoardKey());
     }
 
+    public function rank():Attribute
+    {
+        return Attribute::make(
+            get: fn() => resolve(LeaderBoardService::class)->getRank($this->getLeaderBoardKey()) 
+        );
+    }
+
     public function getScore()
     {
         return resolve(LeaderBoardService::class)->getScore($this->getLeaderBoardKey());
+    }
+
+    public function score():Attribute
+    {
+        return Attribute::make(
+            get: fn() => resolve(LeaderBoardService::class)->getScore($this->getLeaderBoardKey()) 
+        );
     }
 
     public function getLeaderBoardKey()
