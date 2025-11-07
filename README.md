@@ -19,7 +19,7 @@
 
 # API Testing with Postman
 1. Import the Postman Sheypoor.postman_collection.json collection.
-2. Run `docker compose run app php artisan db:seed`
+2. Run `docker exec sheypoor_app php artisan db:seed`
 3. To Keep sync between database and redis run `docker exec -it sheypoor_app  php artisan queue:work`.
 
 # API endpoints:
