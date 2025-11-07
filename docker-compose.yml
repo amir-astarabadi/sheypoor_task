@@ -1,0 +1,55 @@
+services:
+
+  ##########################################
+  # app Service                            #
+  ##########################################  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'sheypoor_app'
+    volumes:
+      - "./:/app"
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - 8000:8000
+      - 8001:8001
+    command: ["php", "artisan", "octane:frankenphp"]
+    networks:
+      - sheypoor_network
+
+  ##########################################
+  # mysql Service                          #
+  ##########################################  
+  mysql:
+    image: mysql:8.0
+    container_name: 'sheypoor_mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sheypoor
+    volumes:
+      - sheypoor_mysql_volume:/var/lib/mysql
+    networks:
+      - sheypoor_network
+
+  ##########################################
+  # redis Service                          #
+  ##########################################  
+  redis:
+    image: redis:6.2.6-alpine
+    container_name: 'sheypoor_redis'
+    volumes:
+      - sheypoor_redis_volume:/usr/local/etc/redis
+    networks:
+      - sheypoor_network
+
+volumes:
+  sheypoor_mysql_volume:
+  sheypoor_redis_volume:
+
+networks:
+  sheypoor_network:
+    name: sheypoor_network
+    external: true
