@@ -17,7 +17,7 @@ class CreateUserTest extends TestCase
         $data['password_confirmation'] = 'password';
 
         // act
-        $response = $this->postJson(route('users.store.store'), $data);
+        $response = $this->postJson(route('users.store'), $data);
 
         // assert
         $response->assertStatus(Response::HTTP_CREATED);
@@ -34,7 +34,7 @@ class CreateUserTest extends TestCase
         $data['email'] = $oldUser->email;
 
         // act
-        $response = $this->postJson(route('users.store.store'), $data);
+        $response = $this->postJson(route('users.store'), $data);
 
         // assert
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -52,7 +52,7 @@ class CreateUserTest extends TestCase
         $data['name'] = $oldUser->name;
 
         // act
-        $response = $this->postJson(route('users.store.store'), $data);
+        $response = $this->postJson(route('users.store'), $data);
 
         // assert
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);

@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use App\Enums\Game;
+use App\Services\LeaderBoard\LeaderBoardService;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class User extends Authenticatable
 {
@@ -46,7 +45,12 @@ class User extends Authenticatable
 
     public function getRank()
     {
-        return Redis::zrevrank(Game::LEADERBOARD, $this->getLeaderBoardKey());
+        return resolve(LeaderBoardService::class)->getRank($this->getLeaderBoardKey());
+    }
+
+    public function getScore()
+    {
+        return resolve(LeaderBoardService::class)->getScore($this->getLeaderBoardKey());
     }
 
     public function getLeaderBoardKey()

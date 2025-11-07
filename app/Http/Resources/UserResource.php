@@ -18,7 +18,7 @@ class UserResource extends JsonResource
             'id' => $this->resource->getKey(),
             'name' => $this->resource->name,
             'email' => $this->resource->email,
-            'score' => $this->resource->score,
+            'score' => $this->resource->getScore(),
             'rank' => $this->resource->getRank(),
         ];
     }
