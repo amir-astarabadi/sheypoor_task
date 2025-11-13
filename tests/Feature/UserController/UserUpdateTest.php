@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Tests\TestCase;
 
-class UpdateUserTest extends TestCase
+class UserUpdateTest extends TestCase
 {
 
     public function test_user_update_score_happy_path(): void

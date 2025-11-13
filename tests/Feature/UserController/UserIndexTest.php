@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Tests\TestCase;
 
-class IndexUserTest extends TestCase
+class UserIndexTest extends TestCase
 {
 
     public function test_top_n_users_happy_path(): void

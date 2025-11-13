@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Tests\TestCase;
 
-class ShowUserTest extends TestCase
+class UserShowTest extends TestCase
 {
 
     public function test_show_user_happy_path(): void

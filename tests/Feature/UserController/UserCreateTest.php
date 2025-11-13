@@ -6,7 +6,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Tests\TestCase;
 
-class CreateUserTest extends TestCase
+class UserCreateTest extends TestCase
 {
 
     public function test_user_creation_happy_path(): void

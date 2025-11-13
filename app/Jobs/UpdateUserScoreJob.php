@@ -26,6 +26,10 @@ class UpdateUserScoreJob implements ShouldQueue
     {
         $user = User::find($this->userId);
 
+        if(!$user){
+            return;
+        }
+
         $score = $leaderBoardService->getScore($user->getLeaderBoardKey());
 
         if ($score) {
